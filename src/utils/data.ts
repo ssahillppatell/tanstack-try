@@ -34,3 +34,17 @@ export const getAllFromDb = async (): Promise<Server[]> => {
 export const clearDb = async (): Promise<void> => {
   await db.clear();
 }
+
+export const addRecordToDb = async (record: Omit<Server, 'id' | 'createdAt'> & { id?: string }): Promise<Server[]> => {
+  const toAdd: Server = {
+    id: crypto.randomUUID(),
+    name: record.name,
+    location: record.location,
+    health: record.health,
+    ip: record.ip,
+    volume: Number(record.volume),
+    createdAt: new Date().toISOString(),
+  };
+  await db.add(toAdd);
+  return (await db.getAll()) as Server[];
+}

@@ -10,6 +10,7 @@ export const createRandomServer = (): Server => {
     health: faker.helpers.arrayElement(["healthy", "disabled", "error"]),
     ip: faker.internet.ipv4(),
     volume: faker.number.int({ min: 1000 }),
+    createdAt: faker.date.past().toISOString()
   }
 }
 
@@ -17,7 +18,7 @@ await write(
   file("./src/assets/fake.json"),
   JSON.stringify(
     faker.helpers.multiple(createRandomServer, {
-      count: 5000
+      count: 100
     })
   )
 )

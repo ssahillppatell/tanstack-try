@@ -37,7 +37,12 @@ const columns = [
   columnHelper.accessor("volume", {
     header: "Volume",
     cell: info => <span className="tabular-nums">{info.getValue()}</span>,
-  })
+  }),
+  // Include createdAt as a hidden column so we can sort by it by default
+  columnHelper.accessor("createdAt", {
+    header: "Created At",
+    cell: info => info.getValue(),
+  }),
 ]
 
 const ServerTable = ({
@@ -45,7 +50,9 @@ const ServerTable = ({
 }: {
     data: Server[]
 }) => {
-  const [sorting, setSorting] = useState<SortingState>([])
+  const [sorting, setSorting] = useState<SortingState>([
+    { id: 'createdAt', desc: true },
+  ])
 
   const table = useReactTable({
     data,
@@ -56,6 +63,9 @@ const ServerTable = ({
     getSortedRowModel: getSortedRowModel(),
     getPaginationRowModel: getPaginationRowModel(),
     initialState: {
+      columnVisibility: {
+        createdAt: false,
+      },
       pagination: {
         pageIndex: 0,
         pageSize: 10,

@@ -7,4 +7,5 @@ export interface Server {
   health: HealthType;
   ip: string;
   volume: number;
+  createdAt: string;
 }
