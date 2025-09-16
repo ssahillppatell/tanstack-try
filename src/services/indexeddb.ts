@@ -75,4 +75,13 @@ export class IndexedDb {
       req.onerror = () => reject(req.error);
     });
   }
+
+  async clear(): Promise<void> {
+    const store = await this.getStore("readwrite");
+    return new Promise((resolve, reject) => {
+      const req = store.clear();
+      req.onsuccess = () => resolve();
+      req.onerror = () => reject(req.error);
+    });
+  }
 }
