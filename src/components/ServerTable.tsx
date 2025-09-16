@@ -179,7 +179,7 @@ const ServerTable = ({
   )
 }
 
-function Filter({ column, table }: { column: Column<Server, unknown>, table: Table<Server> }) {
+function Filter({ column }: { column: Column<Server, unknown>, table: Table<Server> }) {
   const id = column.id
 
   if (id === 'health') {
