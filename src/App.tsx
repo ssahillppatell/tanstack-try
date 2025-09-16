@@ -1,10 +1,13 @@
+import { DataContextProvider } from "./contexts/data"
 import Home from "./pages/Home"
 
 function App() {
   return (
-    <div>
-      <Home />
-    </div>
+    <DataContextProvider>
+      <div>
+        <Home />
+      </div>
+    </DataContextProvider>
   )
 }
 

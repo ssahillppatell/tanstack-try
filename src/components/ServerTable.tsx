@@ -1,5 +1,6 @@
 import type { Server } from "../types/server"
 import { createColumnHelper, flexRender, getCoreRowModel, useReactTable } from "@tanstack/react-table"
+import HealthChip from "./HealthChip"
 
 const columnHelper = createColumnHelper<Server>()
 
@@ -14,7 +15,7 @@ const columns = [
     cell: info => info.getValue(),
   }),
   columnHelper.accessor("health", {
-    cell: info => info.getValue(),
+    cell: info => <HealthChip type={info.getValue()} />,
   }),
   columnHelper.accessor("ip", {
     cell: info => info.getValue(),

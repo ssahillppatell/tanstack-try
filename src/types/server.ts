@@ -1,4 +1,4 @@
-type HealthType = "healthy" | "disabled" | "error";
+export type HealthType = "healthy" | "disabled" | "error";
 
 export interface Server {
   id: string;
