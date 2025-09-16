@@ -3,6 +3,7 @@ import Modal from "./Modal";
 import Form from "./Form";
 import { useDataContext } from "../contexts/data";
 import { addRecordToDb, clearDb, loadAllIntoDb, loadFirstNIntoDb } from "../utils/data";
+import LoadingSpinner from "./LoadingSpinner";
 
 const Controls = () => {
   const { setData } = useDataContext();
@@ -23,6 +24,7 @@ const Controls = () => {
     try {
       setLoading("all");
       const result = await loadAllIntoDb();
+      await new Promise(resolve => setTimeout(resolve, 5000));
       setData(result);
     } finally {
       setLoading(null);
@@ -52,6 +54,7 @@ const Controls = () => {
 
   return (
     <>
+      <LoadingSpinner active={loading !== null} text="Random delay..." />
       <div className="rounded-lg border border-slate-200 bg-white p-4 shadow-sm">
         <div className="flex flex-wrap gap-2">
           <button
@@ -99,4 +102,3 @@ const Controls = () => {
 }
 
 export default Controls
-
