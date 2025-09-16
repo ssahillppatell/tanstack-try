@@ -1,2 +1,6 @@
 @import "tailwindcss";
-@source inline("bg-green-400 text-green-400 bg-red-400 text-red-400 bg-gray-400 text-gray-400");
+@source inline("bg-emerald-600 bg-rose-600 bg-slate-500");
+
+body {
+  @apply bg-slate-50 text-slate-800 antialiased;
+}
