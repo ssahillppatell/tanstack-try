@@ -6,11 +6,7 @@ const Home = () => {
   const { data } = useDataContext();
 
   return (
-    <div className="mx-auto max-w-5xl p-6 space-y-6">
-      <header className="space-y-1">
-        <h1 className="text-xl font-semibold text-slate-800">Server Table</h1>
-      </header>
-
+    <div className="mx-auto max-w-6xl py-6 pt-4 space-y-4">
       <Controls />
 
       {data.length === 0 ? (

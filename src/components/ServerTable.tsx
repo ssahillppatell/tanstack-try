@@ -86,7 +86,7 @@ const ServerTable = ({
                     <th key={header.id} className="text-left text-sm font-semibold text-slate-700 px-4 py-3 border-b border-slate-200 select-none">
                       {header.isPlaceholder ? null : (
                         <button
-                          className="inline-flex items-center gap-1 hover:text-slate-900 focus-visible:outline-none cursor-pointer"
+                          className="inline-flex items-center gap-1 hover:text-slate-900 focus-visible:outline-none"
                           onClick={header.column.getToggleSortingHandler()}
                         >
                           {flexRender(header.column.columnDef.header, header.getContext())}

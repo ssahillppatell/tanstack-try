@@ -4,9 +4,7 @@ import Home from "./pages/Home"
 function App() {
   return (
     <DataContextProvider>
-      <div>
         <Home />
-      </div>
     </DataContextProvider>
   )
 }

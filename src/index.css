@@ -4,3 +4,11 @@
 body {
   @apply bg-slate-50 text-slate-800 antialiased;
 }
+
+button,
+[role="button"] {
+	cursor: pointer;
+}
+:disabled {
+	cursor: default; /* Ensures disabled buttons don't get pointer cursor */
+}

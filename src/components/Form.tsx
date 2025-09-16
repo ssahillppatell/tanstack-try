@@ -27,6 +27,7 @@ const Form = ({ onSubmit, onCancel, defaultValues }: {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
+    console.log(values)
     try {
       setSubmitting(true)
       await onSubmit(values)

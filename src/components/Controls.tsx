@@ -55,7 +55,7 @@ const Controls = () => {
       <div className="rounded-lg border border-slate-200 bg-white p-4 shadow-sm">
         <div className="flex flex-wrap gap-2">
           <button
-            className={`px-3 py-2 rounded text-white disabled:opacity-60 cursor-pointer disabled:cursor-not-allowed transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-slate-400 active:scale-[.98] ${
+            className={`px-3 py-2 rounded text-white disabled:opacity-60 disabled:cursor-not-allowed transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-slate-400 active:scale-[.98] ${
               loading === "ten" ? "bg-amber-600 hover:bg-amber-700" : "bg-blue-400 hover:bg-blue-900"
             }`}
             onClick={handleLoad10}
@@ -64,7 +64,7 @@ const Controls = () => {
             {loading === "ten" ? "Loading…" : "Load 10 records"}
           </button>
           <button
-            className={`px-3 py-2 rounded text-white disabled:opacity-60 cursor-pointer disabled:cursor-not-allowed transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-slate-400 active:scale-[.98] ${
+            className={`px-3 py-2 rounded text-white disabled:opacity-60 disabled:cursor-not-allowed transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-slate-400 active:scale-[.98] ${
               loading === "all" ? "bg-indigo-600 hover:bg-indigo-700" : "bg-slate-700 hover:bg-slate-800"
             }`}
             onClick={handleLoadAll}
@@ -73,7 +73,7 @@ const Controls = () => {
             {loading === "all" ? "Loading…" : "Load all records"}
           </button>
           <button
-            className={`px-3 py-2 rounded text-white disabled:opacity-60 cursor-pointer disabled:cursor-not-allowed transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-slate-400 active:scale-[.98] ${
+            className={`px-3 py-2 rounded text-white disabled:opacity-60 disabled:cursor-not-allowed transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-slate-400 active:scale-[.98] ${
               loading === "clear" ? "bg-rose-600 hover:bg-rose-700" : "bg-red-300 hover:bg-red-700"
             }`}
             onClick={handleClear}
@@ -82,7 +82,7 @@ const Controls = () => {
             {loading === "clear" ? "Clearing…" : "Clear"}
           </button>
           <button
-            className="px-3 py-2 rounded bg-emerald-600 text-white hover:bg-emerald-700 transition-colors cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-400 active:scale-[.98]"
+            className="px-3 py-2 rounded bg-emerald-600 text-white hover:bg-emerald-700 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-400 active:scale-[.98]"
             onClick={() => setOpen(true)}
             disabled={loading !== null}
           >
