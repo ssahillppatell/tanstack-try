@@ -1,69 +1,54 @@
-# React + TypeScript + Vite
+# DOTSEC Assignment – Servers Dashboard
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A small React + TypeScript app that loads a list of server records, stores them in IndexedDB, and renders a sortable, filterable, paginated table with a quick health breakdown chart.
 
-Currently, two official plugins are available:
+Built with Vite, Tailwind CSS, TanStack Table, and ECharts.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+**Key Features**
+- Load 10 or all sample records into IndexedDB.
+- Add a single server via a modal form.
+- Filter by text (ID/Name/Location/IP), select (Health), and numeric range (Volume).
+- Sort columns and paginate results.
+- View a pie chart breakdown of server health.
 
-## Expanding the ESLint configuration
+**Tech Stack**
+- React 19, TypeScript, Vite
+- Tailwind CSS v4 (via `@tailwindcss/vite`)
+- TanStack Table
+- ECharts (via `echarts-for-react`)
+- IndexedDB wrapper (`src/services/indexeddb.ts`)
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+**Project Structure**
+- `src/components/ServerTable.tsx` – Table with filters, sorting, pagination.
+- `src/components/Controls.tsx` – Load/Clear/Add actions and chart modal.
+- `src/components/Form.tsx` – Modal form for adding a server.
+- `src/components/Chart.tsx` – Thin ECharts wrapper.
+- `src/utils/data.ts` – Data loading and IndexedDB helpers.
+- `src/contexts/data.tsx` – Context for `Server[]` in-memory state.
+- `src/assets/fake.json` – Sample records (editable/generated).
 
-```js
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+**Getting Started**
+- Install dependencies: `npm install` (or `pnpm install` or `yarn install`).
+- Start dev server: `npm run dev` then open `http://localhost:5173`.
+- Build production bundle: `npm run build`.
+- Preview build: `npm run preview`.
+- Lint: `npm run lint`.
 
-      // Remove tseslint.configs.recommended and replace with this
-      ...tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      ...tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      ...tseslint.configs.stylisticTypeChecked,
+**Testing**
+- Test runner: Vitest (configured for `jsdom`).
+- Run all tests in watch mode: `npm run test`.
+- Run once (CI): `npm run test:run`.
+- Table tests live in `src/components/__tests__/ServerTable.test.tsx` and cover:
+  - Name text filter updates visible rows.
+  - Health select filter shows only matching rows.
+  - Volume min/max numeric range narrows rows correctly.
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+**Sample Data Generation (Optional)**
+- Script: `generate-fake-data.ts` creates `src/assets/fake.json` records using Faker.
+- The script currently uses the Bun runtime APIs (`file`, `write`).
+- If you have Bun installed, run: `bun run generate-fake-data.ts`.
+- If you do not use Bun, you can modify the script to Node-friendly FS APIs or keep the existing `src/assets/fake.json` as-is.
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
-
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+**Notes**
+- Large data loads are chunked when inserting into IndexedDB to avoid excessive concurrent operations.
+- The loading spinner delays display briefly to prevent flicker on fast operations.
