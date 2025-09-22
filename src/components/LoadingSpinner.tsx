@@ -6,29 +6,7 @@ interface LoadingSpinnerProps {
   text?: string
 }
 
-const LoadingSpinner = ({ active, delayMs = 2000, text = 'Loading…' }: LoadingSpinnerProps) => {
-  const [visible, setVisible] = useState(false)
-  const timerRef = useRef<number | null>(null)
-
-  useEffect(() => {
-    if (active) {
-      // Show spinner after delay to avoid flicker on quick operations
-      timerRef.current = window.setTimeout(() => setVisible(true), delayMs)
-    } else {
-      // Cancel pending show and hide immediately
-      if (timerRef.current) window.clearTimeout(timerRef.current)
-      timerRef.current = null
-      setVisible(false)
-    }
-
-    return () => {
-      if (timerRef.current) window.clearTimeout(timerRef.current)
-      timerRef.current = null
-    }
-  }, [active, delayMs])
-
-  if (!visible) return null
-
+const LoadingSpinner = ({ text = 'Loading…' }: LoadingSpinnerProps) => {
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/30">
       <div className="flex flex-col items-center gap-3 rounded-lg bg-white px-6 py-5 shadow-lg">

@@ -90,8 +90,10 @@ const Controls = () => {
   };
 
   return (
-    <>
-      <LoadingSpinner active={loading !== null} text="Random delay..." />
+    <>{
+      loading && <LoadingSpinner active={true} />
+    }
+      {/* <LoadingSpinner active={loading !== null} text="Random delay..." /> */}
       <div className="rounded-lg border border-slate-200 bg-white p-4 shadow-sm flex justify-between">
         <div className="flex flex-wrap gap-2">
           <button
