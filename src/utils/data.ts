@@ -2,7 +2,7 @@ import FakeServerData from '../assets/fake.json' assert { type: "json" };
 import type { Server } from '../types/server';
 import { IndexedDb } from '../services/indexeddb';
 
-const db = new IndexedDb('dotsec-db', 'servers');
+const db = new IndexedDb('dopesec-db', 'servers');
 
 const takeFirst = (count: number): Server[] =>
   (FakeServerData as Server[]).slice(0, count);

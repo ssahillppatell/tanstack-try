@@ -1,8 +1,4 @@
-import { useEffect, useRef, useState } from 'react'
-
-interface LoadingSpinnerProps {
-  active: boolean
-  delayMs?: number
+export interface LoadingSpinnerProps {
   text?: string
 }
 
